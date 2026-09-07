@@ -12,8 +12,6 @@ import Rank from './pages/user/Rank'
 import Wallet from './pages/user/Wallet'
 import Profile from './pages/user/Profile'
 import Settings from './pages/user/Settings'
-import ProfileComplete from './components/ProfileComplete'
-
 import AdminApp from './pages/admin/AdminApp'
 import AdminDashboard from './pages/admin/AdminDashboardPage'
 import AdminTournaments from './pages/admin/AdminTournamentsPage'
@@ -91,8 +89,6 @@ export default function App() {
     )
   }
 
-  const needsProfile = user && (!user.phone || !user.ff_name || !user.ff_uid)
-
   return (
     <BrowserRouter>
       <Routes>
@@ -120,13 +116,8 @@ export default function App() {
       </Routes>
 
       {/* Bottom tab bars (each self-hides on wrong section) */}
-      {user && !needsProfile && <TabBar />}
+      {user && <TabBar />}
       <AdminTabBar />
-
-      {/* Forced profile completion popup */}
-      {user && needsProfile && (
-        <ProfileComplete user={user} onDone={(fresh) => setUser(fresh)} />
-      )}
 
       {toast && <Toast message={toast.message} type={toast.type} />}
       {offline && <div className="offline-popup">📶 No Internet Connection</div>}
