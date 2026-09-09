@@ -24,15 +24,15 @@ export default function TabBar() {
   if (location.pathname.startsWith('/admin')) return null
 
   return (
-    <div className="tab-bar">
+    <div className="bottom-nav">
       {tabs.map(tab => (
         <button
           key={tab.path}
-          className={`tab-item ${location.pathname === tab.path ? 'active' : ''}`}
+          className={`nav-item ${location.pathname === tab.path ? 'active' : ''}`}
           onClick={() => navigate(tab.path)}
         >
-          <span className="tab-icon">{icons[tab.icon]}</span>
-          <span className="tab-label">{tab.label}</span>
+          <span className="nav-icon">{icons[tab.icon]}</span>
+          <span>{tab.label}</span>
         </button>
       ))}
     </div>

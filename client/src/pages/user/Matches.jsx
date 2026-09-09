@@ -54,7 +54,7 @@ export default function Matches({ user, showToast }) {
   return (
     <div className="app-container">
       <AppHeader user={user} />
-      <div className="page-content">
+      <div className="main-content">
         <div className="ios-segment">
           <button className={`segment-btn ${tab === 'upcoming' ? 'active' : ''}`} onClick={() => setTab('upcoming')}>Upcoming</button>
           <button className={`segment-btn ${tab === 'completed' ? 'active' : ''}`} onClick={() => setTab('completed')}>Completed</button>

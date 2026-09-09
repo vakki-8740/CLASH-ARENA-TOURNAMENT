@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import FB from '../lib/fb'
 import Icon from './Icon'
 
-// Forced "Complete your profile" popup — same as the HTML app's
-// #profile-complete-popup. Won't close until all fields are filled.
 export default function ProfileComplete({ user, onDone }) {
   const [form, setForm] = useState({
     name: user?.name || '', phone: user?.phone || '',
@@ -38,8 +36,8 @@ export default function ProfileComplete({ user, onDone }) {
   }
 
   return (
-    <div className="pc-overlay">
-      <div className="pc-card">
+    <div className="profile-complete-overlay">
+      <div className="profile-complete-card">
         <div className="pc-header">
           <div className="pc-icon"><Icon name="user" size={32} /></div>
           <h2>Profile Complete Karo!</h2>
@@ -47,23 +45,23 @@ export default function ProfileComplete({ user, onDone }) {
         </div>
         {error && <div className="pc-error">{error}</div>}
         <div className="pc-field">
-          <label>Your Name *</label>
+          <label>Your Name <span>*</span></label>
           <input type="text" value={form.name} onChange={set('name')} placeholder="Enter your full name" />
         </div>
         <div className="pc-field">
-          <label>Phone Number *</label>
+          <label>Phone Number <span>*</span></label>
           <input type="number" value={form.phone} onChange={set('phone')} placeholder="10-Digit Mobile Number" maxLength={10} />
           <div className="pc-hint">Phone number will be used for login</div>
         </div>
         <div className="pc-field">
-          <label>Free Fire Name *</label>
+          <label>Free Fire Name <span>*</span></label>
           <input type="text" value={form.ffName} onChange={set('ffName')} placeholder="FF in-game name" />
         </div>
         <div className="pc-field">
-          <label>Free Fire UID *</label>
+          <label>Free Fire UID <span>*</span></label>
           <input type="number" value={form.ffUid} onChange={set('ffUid')} placeholder="FF UID number" />
         </div>
-        <button className="btn btn-primary" style={{ width: '100%' }} onClick={save} disabled={saving}>
+        <button className="btn btn-primary" style={{ width: '100%', marginTop: '5px' }} onClick={save} disabled={saving}>
           {saving ? 'Saving...' : 'Save & Continue'}
         </button>
       </div>

@@ -30,10 +30,10 @@ function PollCard({ poll, uid, showToast, onVoted }) {
         const pct = totalVotes ? Math.round((count / totalVotes) * 100) : 0
         const mine = userVotedOpt === key
         return (
-<button key={key} className={`poll-option ${mine ? 'poll-option-mine' : ''}`} onClick={() => vote(key)} disabled={!!userVotedOpt}>
-              <div className="poll-option-row">
-                <span>{text}{mine ? ' ' : ''}{mine && <Icon name="checkmark" size={14} />}</span>
-                {userVotedOpt && <span>{pct}%</span>}
+          <button key={key} className={`poll-option ${mine ? 'poll-option-mine' : ''}`} onClick={() => vote(key)} disabled={!!userVotedOpt}>
+            <div className="poll-option-row">
+              <span>{text}{mine ? ' ' : ''}{mine && <Icon name="checkmark" size={14} />}</span>
+              {userVotedOpt && <span>{pct}%</span>}
             </div>
             {userVotedOpt && (
               <div className="poll-bar"><div className="poll-bar-fill" style={{ width: pct + '%' }} /></div>
@@ -83,7 +83,6 @@ function TournamentCard({ t, joined, onOpen }) {
   )
 }
 
-// Home page (replaces user/home.html main app + home.js loadHomeTournaments / loadPolls)
 export default function Home({ user, showToast }) {
   const navigate = useNavigate()
   const [tournaments, setTournaments] = useState([])
@@ -109,20 +108,23 @@ export default function Home({ user, showToast }) {
   return (
     <div className="app-container">
       <AppHeader user={user} />
-      <div className="page-content">
-        {polls.map(poll => (
-          <PollCard key={poll.id} poll={poll} uid={user.uid} showToast={showToast} onVoted={load} />
-        ))}
-
-        {loading ? (
-          <div className="empty-state">Loading...</div>
-        ) : tournaments.length === 0 ? (
-          <div className="empty-state">No Active Tournaments</div>
-        ) : (
-          tournaments.map(t => (
-            <TournamentCard key={t.id} t={t} joined={joinedIds.has(String(t.id))} onOpen={() => navigate(`/tournaments/${t.id}`)} />
-          ))
-        )}
+      <div className="main-content" id="home">
+        <div id="home-polls-list">
+          {polls.map(poll => (
+            <PollCard key={poll.id} poll={poll} uid={user.uid} showToast={showToast} onVoted={load} />
+          ))}
+        </div>
+        <div id="home-tournaments-list">
+          {loading ? (
+            <div className="empty-state">Loading...</div>
+          ) : tournaments.length === 0 ? (
+            <div className="empty-state">No Active Tournaments</div>
+          ) : (
+            tournaments.map(t => (
+              <TournamentCard key={t.id} t={t} joined={joinedIds.has(String(t.id))} onOpen={() => navigate(`/tournaments/${t.id}`)} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   )

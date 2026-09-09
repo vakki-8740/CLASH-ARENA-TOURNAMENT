@@ -153,7 +153,7 @@ export default function UserWallet({ user, onUser, showToast }) {
   return (
     <div className="app-container">
       <AppHeader user={user} />
-      <div className="page-content">
+      <div className="main-content">
         <div className="wallet-hero">
           <div className="balance-label">Main Wallet Balance</div>
           <div className="balance-amount">₹{balance.toLocaleString('en-IN')}</div>

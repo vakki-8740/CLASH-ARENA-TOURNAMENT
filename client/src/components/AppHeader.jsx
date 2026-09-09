@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import FB from '../lib/fb'
 
-// Shared top header: logo, app name (from settings), wallet balance, avatar
 export default function AppHeader({ user, balance }) {
   const navigate = useNavigate()
   const [settings, setSettings] = useState({})
@@ -27,19 +26,19 @@ export default function AppHeader({ user, balance }) {
   }, [])
 
   return (
-    <div className="app-header">
-      <div className="app-header-left" onClick={() => navigate('/home')}>
-        <div className="app-header-logo">
+    <div className="header">
+      <div className="header-left" onClick={() => navigate('/home')}>
+        <div className="header-logo">
           {settings.appLogo
             ? <img src={settings.appLogo} alt="" />
-            : <span>{(settings.appName || 'QBIT SPORTS').slice(0, 2).toUpperCase()}</span>}
+            : <span>{(settings.appName || 'QS').slice(0, 2).toUpperCase()}</span>}
         </div>
         <div>
-          <div className="app-header-name">{settings.appName || 'QBIT SPORTS'}</div>
-          <div className="app-header-sub">Play & Win</div>
+          <div className="header-app-name">{settings.appName || 'QBIT SPORTS'}</div>
+          <div className="header-app-sub">Play & Win</div>
         </div>
       </div>
-      <div className="app-header-right">
+      <div className="header-right">
         <div className="wallet-badge" onClick={() => navigate('/wallet')}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12a2 2 0 100-4 2 2 0 000 4z"/></svg>
           ₹{bal}

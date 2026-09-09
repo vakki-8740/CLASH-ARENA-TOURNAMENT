@@ -35,7 +35,7 @@ export default function Settings({ user, onLogout, showToast }) {
   return (
     <div className="app-container">
       <AppHeader user={user} />
-      <div className="page-content">
+      <div className="main-content">
         <h2 className="page-title">Settings</h2>
 
         <div className="settings-list card">

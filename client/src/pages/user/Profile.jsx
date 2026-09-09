@@ -86,7 +86,7 @@ export default function UserProfile({ user, onUser, onLogout, showToast }) {
   return (
     <div className="app-container">
       <AppHeader user={user} />
-      <div className="page-content">
+      <div className="main-content">
         <div className="profile-hero card">
           <label className="profile-avatar-wrap">
             <div

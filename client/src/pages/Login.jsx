@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import FB from '../lib/fb'
 
-// Auth page (replaces user/home.html #auth-page + auth.js handleGoogleLogin)
-// Google login — Login & Sign Up both use Google
 export default function Login({ onLogin, showToast }) {
   const [loading, setLoading] = useState(false)
   const [appName, setAppName] = useState('QBIT SPORTS')
@@ -35,7 +33,7 @@ export default function Login({ onLogin, showToast }) {
       </div>
       <button className="google-btn" onClick={handleGoogleLogin} disabled={loading}>
         {loading ? (
-          <span className="google-btn-loading">Connecting...</span>
+          <span>Connecting...</span>
         ) : (
           <>
             <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" />
@@ -47,4 +45,3 @@ export default function Login({ onLogin, showToast }) {
     </div>
   )
 }
-

@@ -27,7 +27,7 @@ export default function Rank({ user, showToast }) {
   return (
     <div className="app-container">
       <AppHeader user={user} />
-      <div className="page-content">
+      <div className="main-content">
         {loading ? (
           <div className="empty-state">Loading...</div>
         ) : tournaments.length === 0 ? (
