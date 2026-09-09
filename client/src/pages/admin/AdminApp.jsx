@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../lib/firebase'
+import Icon from '../../components/Icon'
 
-// Admin login (replaces admin.html login section + admin.js handleLogin)
-// Uses Firebase Email/Password auth
 export default function AdminApp({ showToast }) {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
@@ -29,7 +28,7 @@ export default function AdminApp({ showToast }) {
   return (
     <div className="admin-login-wrap">
       <form className="admin-login-card card" onSubmit={handleLogin}>
-        <div className="admin-login-logo">🛡</div>
+        <div className="admin-login-logo"><Icon name="shield" size={42} /></div>
         <h1>QBIT SPORTS</h1>
         <p className="admin-login-sub">Admin Panel</p>
 
@@ -47,7 +46,7 @@ export default function AdminApp({ showToast }) {
         <button className="btn btn-primary" type="submit" disabled={loading} style={{ width: '100%', marginTop: 8 }}>
           {loading ? 'Signing in...' : 'Login'}
         </button>
-        <button type="button" className="admin-login-back" onClick={() => navigate('/home')}>← Back to App</button>
+        <button type="button" className="admin-login-back" onClick={() => navigate('/home')}><Icon name="back" size={16} /> Back to App</button>
       </form>
     </div>
   )

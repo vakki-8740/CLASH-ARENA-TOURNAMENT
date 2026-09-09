@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FB from '../../lib/fb'
 import AdminHeader from '../../components/AdminHeader'
+import Icon from '../../components/Icon'
 
 // Admin Transactions (replaces admin.html transactions section + admin.js loadTransactions/approve)
 export default function AdminTransactions({ showToast }) {
@@ -61,11 +62,11 @@ export default function AdminTransactions({ showToast }) {
             {tx.status === 'Pending' && (tx.type === 'Deposit' || tx.type === 'Withdraw') && (
               <div className="admin-row-actions">
                 {tx.type === 'Deposit' ? (
-                  <button className="btn btn-primary" disabled={busy} onClick={() => setStatus(tx, 'Success')}>✓ Approve Deposit</button>
+                  <button className="btn btn-primary" disabled={busy} onClick={() => setStatus(tx, 'Success')}><Icon name="checkmark" size={14} /> Approve Deposit</button>
                 ) : (
-                  <button className="btn btn-primary" disabled={busy} onClick={() => setStatus(tx, 'Success')}>✓ Mark Paid</button>
+                  <button className="btn btn-primary" disabled={busy} onClick={() => setStatus(tx, 'Success')}><Icon name="checkmark" size={14} /> Mark Paid</button>
                 )}
-                <button className="btn btn-danger" disabled={busy} onClick={() => setStatus(tx, 'Rejected')}>✕ Reject</button>
+                <button className="btn btn-danger" disabled={busy} onClick={() => setStatus(tx, 'Rejected')}><Icon name="close" size={14} /> Reject</button>
               </div>
             )}
           </div>

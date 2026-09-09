@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Modal } from '../../components/Card'
 import FB from '../../lib/fb'
 import AppHeader from '../../components/AppHeader'
+import Icon from '../../components/Icon'
 
 // Profile page (replaces user/profile.html + profile.js)
 export default function UserProfile({ user, onUser, onLogout, showToast }) {
@@ -92,7 +93,7 @@ export default function UserProfile({ user, onUser, onLogout, showToast }) {
               className="profile-avatar"
               style={user.avatar ? { backgroundImage: `url('${user.avatar}')` } : {}}
             >{!user.avatar && (user.name || 'U').charAt(0).toUpperCase()}</div>
-            <span className="profile-avatar-edit">📷</span>
+            <span className="profile-avatar-edit"><Icon name="camera" size={16} /></span>
             <input type="file" accept="image/*" hidden onChange={uploadAvatar} />
           </label>
           <h2 className="profile-name">{user.name || 'User'}</h2>
@@ -108,27 +109,27 @@ export default function UserProfile({ user, onUser, onLogout, showToast }) {
 
         <div className="card" style={{ marginBottom: 16 }}>
           <div className="list-item">
-            <span>🎮</span>
+              <span><Icon name="gamePad" size={16} /></span>
             <div className="list-item-content">
               <div className="list-item-title">FF Name: {user.ff_name || 'Not Set'}</div>
             </div>
           </div>
           <div className="list-item">
-            <span>#️⃣</span>
+            <span><Icon name="hashtag" size={16} /></span>
             <div className="list-item-content">
               <div className="list-item-title">FF UID: {user.ff_uid || 'Not Set'}</div>
             </div>
           </div>
-          <button className="btn btn-secondary" style={{ width: '100%', marginTop: 8 }} onClick={() => { setForm({ name: user.name || '', ffName: user.ff_name || '', ffUid: user.ff_uid || '' }); setShowEdit(true) }}>
-            ✏️ Edit Profile
+            <button className="btn btn-secondary" style={{ width: '100%', marginTop: 8 }} onClick={() => { setForm({ name: user.name || '', ffName: user.ff_name || '', ffUid: user.ff_uid || '' }); setShowEdit(true) }}>
+            <Icon name="edit" size={16} /> Edit Profile
           </button>
-        </div>
+          </div>
 
         <div className="settings-list card">
-          <div className="setting-item" onClick={() => navigate('/settings')}><span>⚙️ Settings</span><i className="chev">›</i></div>
-          <div className="setting-item" onClick={() => openAdminLink('telegram')}><span>✈️ Join Telegram</span><i className="chev">›</i></div>
-          <div className="setting-item" onClick={() => openAdminLink('help')}><span>❓ Help & Support</span><i className="chev">›</i></div>
-          <div className="setting-item" onClick={() => navigate('/admin/login')}><span>🛡 Admin Panel</span><i className="chev">›</i></div>
+          <div className="setting-item" onClick={() => navigate('/settings')}><span><Icon name="settings" size={16} /> Settings</span><i className="chev"><Icon name="chevronRight" size={14} /></i></div>
+          <div className="setting-item" onClick={() => openAdminLink('telegram')}><span><Icon name="telegram" size={16} /> Join Telegram</span><i className="chev"><Icon name="chevronRight" size={14} /></i></div>
+          <div className="setting-item" onClick={() => openAdminLink('help')}><span><Icon name="info" size={16} /> Help & Support</span><i className="chev"><Icon name="chevronRight" size={14} /></i></div>
+          <div className="setting-item" onClick={() => navigate('/admin/login')}><span><Icon name="shield" size={16} /> Admin Panel</span><i className="chev"><Icon name="chevronRight" size={14} /></i></div>
         </div>
 
         <button className="btn btn-danger" style={{ width: '100%', marginTop: 16 }} onClick={() => {

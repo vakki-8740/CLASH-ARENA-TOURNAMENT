@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Modal } from '../../components/Card'
 import FB from '../../lib/fb'
 import AppHeader from '../../components/AppHeader'
+import Icon from '../../components/Icon'
 
 // Wallet page (replaces user/wallet.html + wallet.js)
 export default function UserWallet({ user, onUser, showToast }) {
@@ -144,9 +145,9 @@ export default function UserWallet({ user, onUser, showToast }) {
 
   const txVisual = (tx) => {
     if (tx.type === 'Withdraw') return { cls: 'wit', icon: '↑', sign: '-' }
-    if (tx.type === 'Join Fee') return { cls: 'join', icon: '🎮', sign: '-' }
-    if (tx.type === 'Win') return { cls: 'dep', icon: '🏆', sign: '+' }
-    return { cls: 'dep', icon: '↓', sign: '+' }
+    if (tx.type === 'Join Fee') return { cls: 'join', icon: <Icon name="gamePad" size={16} />, sign: '-' }
+    if (tx.type === 'Win') return { cls: 'dep', icon: <Icon name="win" size={16} />, sign: '+' }
+    return { cls: 'dep', icon: <Icon name="deposit" size={16} />, sign: '+' }
   }
 
   return (
@@ -166,8 +167,8 @@ export default function UserWallet({ user, onUser, showToast }) {
         </div>
 
         <div className="grid-2">
-          <button className="btn btn-primary" onClick={() => setShowDeposit(true)}>💰 Deposit</button>
-          <button className="btn btn-secondary" onClick={openWithdraw}>💳 Withdraw</button>
+          <button className="btn btn-primary" onClick={() => setShowDeposit(true)}><Icon name="deposit" size={16} /> Deposit</button>
+          <button className="btn btn-secondary" onClick={openWithdraw}><Icon name="withdraw" size={16} /> Withdraw</button>
         </div>
 
         <h3 style={{ fontSize: '16px', fontWeight: 700, margin: '16px 0 12px' }}>Transaction History</h3>
@@ -201,7 +202,7 @@ export default function UserWallet({ user, onUser, showToast }) {
 
 
       {/* Deposit modal — QR / UPI from admin settings + UTR */}
-      <Modal isOpen={showDeposit} onClose={() => setShowDeposit(false)} title="💰 Add Money">
+      <Modal isOpen={showDeposit} onClose={() => setShowDeposit(false)} title={<span><Icon name="deposit" size={16} /> Add Money</span>}>
         {settings.qrImage && (
           <div style={{ textAlign: 'center', marginBottom: 12 }}>
             <img src={settings.qrImage} alt="Payment QR" style={{ width: 160, height: 160, borderRadius: 12, objectFit: 'contain', background: '#fff', padding: 8 }} />
@@ -228,7 +229,7 @@ export default function UserWallet({ user, onUser, showToast }) {
       </Modal>
 
       {/* Withdraw modal */}
-      <Modal isOpen={showWithdraw} onClose={() => setShowWithdraw(false)} title="💳 Withdraw">
+      <Modal isOpen={showWithdraw} onClose={() => setShowWithdraw(false)} title={<span><Icon name="withdraw" size={16} /> Withdraw</span>}>
         <div className="input-group">
           <label className="input-label">Amount (₹) — Min ₹100</label>
           <input className="input-field" type="number" value={withAmount} onChange={e => setWithAmount(e.target.value)} placeholder="Enter amount" />
@@ -290,7 +291,7 @@ export default function UserWallet({ user, onUser, showToast }) {
       {/* Withdraw success animation */}
       {successAnim && (
         <div className="success-anim-overlay">
-          <div className="success-anim-circle">✓</div>
+          <div className="success-anim-circle"><Icon name="checkmark" size={32} /></div>
           <p>Withdraw Request Sent!</p>
         </div>
       )}

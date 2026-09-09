@@ -1,4 +1,5 @@
 import React from 'react'
+import Icon from './Icon'
 
 export function Card({ children, className = '', onClick }) {
   return (
@@ -63,7 +64,7 @@ export function Modal({ isOpen, onClose, title, children }) {
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
           <h3>{title}</h3>
-          <button className="modal-close" onClick={onClose}>✕</button>
+          <button className="modal-close" onClick={onClose}><Icon name="close" size={18} /></button>
         </div>
         <div className="modal-body">{children}</div>
       </div>

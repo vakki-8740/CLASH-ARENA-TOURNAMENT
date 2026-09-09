@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FB from '../../lib/fb'
 import AppHeader from '../../components/AppHeader'
+import Icon from '../../components/Icon'
 
 const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Crect fill='%23007aff' width='150' height='150'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EQBIT%3C/text%3E%3C/svg%3E"
 
@@ -49,7 +50,7 @@ export default function Rank({ user, showToast }) {
             </div>
             {t.winner_name && t.winner_uid ? (
               <div className="rc-winner">
-                <div className="rcw-crown">👑</div>
+                <div className="rcw-crown"><Icon name="crown" size={24} /></div>
                 <div className="rcw-details">
                   <p>#1 Winner</p>
                   <h3>{t.winner_name}</h3>

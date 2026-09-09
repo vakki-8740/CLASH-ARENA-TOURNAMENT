@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AppHeader from '../../components/AppHeader'
 import FB from '../../lib/fb'
+import Icon from '../../components/Icon'
 
 // Settings page (replaces user/settings.html + settings.js)
 export default function Settings({ user, onLogout, showToast }) {
@@ -39,26 +40,26 @@ export default function Settings({ user, onLogout, showToast }) {
 
         <div className="settings-list card">
           <div className="setting-item">
-            <span>🌙 Dark Mode</span>
+            <span><Icon name="moon" size={16} /> Dark Mode</span>
             <label className="switch">
               <input type="checkbox" checked={dark} onChange={e => setDark(e.target.checked)} />
               <span className="slider" />
             </label>
           </div>
           <div className="setting-item" onClick={shareApp}>
-            <span>📤 Share App</span><i className="chev">›</i>
+            <span><Icon name="share" size={16} /> Share App</span><i className="chev"><Icon name="chevronRight" size={14} /></i>
           </div>
           <div className="setting-item" onClick={() => showToast('Rate us on the Play Store!')}>
-            <span>⭐ Rate App</span><i className="chev">›</i>
+            <span><Icon name="star" size={16} /> Rate App</span><i className="chev"><Icon name="chevronRight" size={14} /></i>
           </div>
           <div className="setting-item" onClick={() => setAbout(true)}>
-            <span>ℹ️ About</span><i className="chev">›</i>
+            <span><Icon name="info" size={16} /> About</span><i className="chev"><Icon name="chevronRight" size={14} /></i>
           </div>
           <div className="setting-item" onClick={() => setPrivacy(true)}>
-            <span>🔒 Privacy Policy</span><i className="chev">›</i>
+            <span><Icon name="lock" size={16} /> Privacy Policy</span><i className="chev"><Icon name="chevronRight" size={14} /></i>
           </div>
           <div className="setting-item" onClick={clearCache}>
-            <span>🗑 Clear Cache</span><i className="chev">›</i>
+            <span><Icon name="trash" size={16} /> Clear Cache</span><i className="chev"><Icon name="chevronRight" size={14} /></i>
           </div>
         </div>
 

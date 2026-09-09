@@ -4,6 +4,7 @@ import { Modal } from '../../components/Card'
 import FB from '../../lib/fb'
 import AppHeader from '../../components/AppHeader'
 import Countdown from '../../components/Countdown'
+import Icon from '../../components/Icon'
 
 const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='200'%3E%3Crect fill='%23007aff' width='500' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3EQBIT SPORTS%3C/text%3E%3C/svg%3E"
 
@@ -94,7 +95,7 @@ export default function TournamentDetail({ user, showToast, onUser }) {
       <AppHeader user={user} />
       <div className="page-content">
         <div className="detail-topbar">
-          <button className="back-btn" onClick={() => navigate(-1)}>←</button>
+          <button className="back-btn" onClick={() => navigate(-1)}><Icon name="back" size={20} /></button>
           <h2 className="detail-title">{data.title || 'Tournament'}</h2>
         </div>
 
@@ -119,12 +120,12 @@ export default function TournamentDetail({ user, showToast, onUser }) {
             <div className="jp-av" style={{ backgroundImage: `url('https://api.dicebear.com/7.x/avataaars/svg?seed=${data.id}2')` }} />
             <div className="jp-av" style={{ backgroundImage: `url('https://api.dicebear.com/7.x/avataaars/svg?seed=${data.id}3')` }} />
           </div>
-          <div className="jp-text"><strong>{joinedCount}/{totalTarget}</strong> Players Joined ›</div>
+          <div className="jp-text"><strong>{joinedCount}/{totalTarget}</strong> Players Joined <Icon name="chevronRight" size={14} /></div>
         </div>
 
         {joined && data.showRoom && (
           <div className="fp-box fp-box-success">
-            <h3>🔑 Room Details</h3>
+            <h3><Icon name="key" size={18} /> Room Details</h3>
             <div className="fp-row"><span>Room ID:</span><strong>{data.room_id || 'N/A'}</strong>
               <button className="copy-btn" onClick={() => copyText(data.room_id)}>Copy</button></div>
             <div className="fp-row"><span>Password:</span><strong>{data.room_pass || 'N/A'}</strong>
@@ -133,18 +134,18 @@ export default function TournamentDetail({ user, showToast, onUser }) {
         )}
         {joined && !data.showRoom && (
           <div className="fp-box fp-box-warning">
-            <h3>🔒 Room Details Hidden</h3>
+            <h3><Icon name="lock" size={18} /> Room Details Hidden</h3>
             <p>Admin will reveal before the match starts.</p>
           </div>
         )}
 
         <div className="fp-box">
-          <h3>📋 Rules</h3>
+          <h3><Icon name="clipboard" size={18} /> Rules</h3>
           <p style={{ whiteSpace: 'pre-wrap' }}>{data.rules || 'Play fair. No hacks.'}</p>
         </div>
 
         {joined ? (
-          <button className="btn btn-primary btn-joined" disabled>✓ Already Joined</button>
+          <button className="btn btn-primary btn-joined" disabled><Icon name="checkmark" size={16} /> Already Joined</button>
         ) : (
           <button
             className="btn btn-primary"

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import FB from '../lib/fb'
+import Icon from './Icon'
 
 // Forced "Complete your profile" popup — same as the HTML app's
 // #profile-complete-popup. Won't close until all fields are filled.
@@ -40,7 +41,7 @@ export default function ProfileComplete({ user, onDone }) {
     <div className="pc-overlay">
       <div className="pc-card">
         <div className="pc-header">
-          <div className="pc-icon">👤</div>
+          <div className="pc-icon"><Icon name="user" size={32} /></div>
           <h2>Profile Complete Karo!</h2>
           <p>Fill all details, this popup won't close until done</p>
         </div>

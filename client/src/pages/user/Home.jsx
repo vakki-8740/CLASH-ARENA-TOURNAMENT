@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import FB from '../../lib/fb'
 import AppHeader from '../../components/AppHeader'
 import Countdown from '../../components/Countdown'
+import Icon from '../../components/Icon'
 
 const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='200'%3E%3Crect fill='%23007aff' width='500' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3EQBIT SPORTS%3C/text%3E%3C/svg%3E"
 
@@ -29,10 +30,10 @@ function PollCard({ poll, uid, showToast, onVoted }) {
         const pct = totalVotes ? Math.round((count / totalVotes) * 100) : 0
         const mine = userVotedOpt === key
         return (
-          <button key={key} className={`poll-option ${mine ? 'poll-option-mine' : ''}`} onClick={() => vote(key)} disabled={!!userVotedOpt}>
-            <div className="poll-option-row">
-              <span>{text}{mine ? ' ✓' : ''}</span>
-              {userVotedOpt && <span>{pct}%</span>}
+<button key={key} className={`poll-option ${mine ? 'poll-option-mine' : ''}`} onClick={() => vote(key)} disabled={!!userVotedOpt}>
+              <div className="poll-option-row">
+                <span>{text}{mine ? ' ' : ''}{mine && <Icon name="checkmark" size={14} />}</span>
+                {userVotedOpt && <span>{pct}%</span>}
             </div>
             {userVotedOpt && (
               <div className="poll-bar"><div className="poll-bar-fill" style={{ width: pct + '%' }} /></div>
@@ -74,9 +75,9 @@ function TournamentCard({ t, joined, onOpen }) {
             <div className="jp-av" style={{ backgroundImage: `url('https://api.dicebear.com/7.x/avataaars/svg?seed=${t.id}2')` }} />
             <div className="jp-av" style={{ backgroundImage: `url('https://api.dicebear.com/7.x/avataaars/svg?seed=${t.id}3')` }} />
           </div>
-          <div className="jp-text"><strong>{joinedCount}/{totalTarget}</strong> Players Joined ›</div>
+          <div className="jp-text"><strong>{joinedCount}/{totalTarget}</strong> Players Joined <Icon name="chevronRight" size={14} /></div>
         </div>
-        {joined && <div className="t-joined-flag">✓ You Joined</div>}
+        {joined && <div className="t-joined-flag"><Icon name="checkmark" size={14} /> You Joined</div>}
       </div>
     </div>
   )

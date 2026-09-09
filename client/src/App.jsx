@@ -24,6 +24,7 @@ import AdminSettings from './pages/admin/Settings'
 import TabBar from './components/TabBar'
 import AdminTabBar from './components/AdminTabBar'
 import Toast from './components/Toast'
+import Icon from './components/Icon'
 
 export default function App() {
   const [user, setUser] = useState(undefined) // undefined = loading, null = logged out
@@ -120,7 +121,7 @@ export default function App() {
       <AdminTabBar />
 
       {toast && <Toast message={toast.message} type={toast.type} />}
-      {offline && <div className="offline-popup">📶 No Internet Connection</div>}
+      {offline && <div className="offline-popup"><Icon name="offline" size={16} /> No Internet Connection</div>}
     </BrowserRouter>
   )
 }
